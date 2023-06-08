@@ -67,7 +67,7 @@ def start_game():
             else:
                 count_success = 0
                 if answer:
-                    print(get_message(1))
+                    print(get_message(1, name))
                 else:
                     print(get_message(0))
         elif is_exit(answer):
