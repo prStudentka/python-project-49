@@ -1,5 +1,5 @@
 import prompt
-from brain_games.games.rule import rule_even, rule_calc, rule_gcd, rule_progression
+from brain_games.games.rule import rule_even, rule_calc, rule_gcd, rule_progression, rule_prime
 from brain_games.games.question import get_question_even, get_question_calc, get_question_gcd, get_question_progression
 from brain_games.games.answer import check_answer_even, check_answer_calc
 
@@ -7,7 +7,7 @@ from brain_games.games.answer import check_answer_even, check_answer_calc
 def get_message(num, name="gamer"):
     message = ""
     match num:
-        case 1: message = f"'yes' is wrong answer ;(. Correct answer was 'no'.\nLet's try again, {name}!"
+        case 1: message = f"'yes' is wrong answer ;(. Correct answer was 'no'."
         case 2: message = "Correct!"
         case 3: message = f"Congratulations, {name}!"
         case 4: message = f"Let's try again, {name}!"
@@ -20,6 +20,17 @@ def is_even(number: str) -> bool:
     return int(number) % 2 == 0
 
 
+def is_prime(number:str) -> bool:
+    if int(number) == 1:
+        return True
+    else:
+        length = int(number) // 2 + 1 if int(number) <= 10 else 11
+        for i in range(2, length):
+            if int(number) % i == 0:
+                return False
+    return True
+
+
 def common_divisor(numbers: str):
     num1, num2 = numbers.split()
     max_num = max(int(num1), int(num2)) + 1
@@ -28,7 +39,7 @@ def common_divisor(numbers: str):
     if (max_num - 1) % min_num == 0:
         result = min_num
     else:
-        middle = min_num // 2
+        middle = min_num // 2 + 1
         for i in range(1, middle):
             if int(num1) % i == 0 and int(num2) % i == 0:
                 result = i
@@ -68,6 +79,27 @@ def game(config: dict, func) -> list:
     return result
 
 
+def play_game(config, func, user_name, answer_yes = False):
+    count_success = 0
+    while True or count_success <= 3:
+        brain_answer, answer, correct_answer = game(config, func)
+        if correct_answer:
+            if (brain_answer == get_int(answer)):
+                count_success += 1
+                print(get_message(2))
+                if count_success == 3:
+                    print(get_message(count_success, user_name))
+                    break
+            else:
+                if not answer_yes:
+                    print(f"'{answer}' {get_message(5)} '{brain_answer}'.") 
+                    print(get_message(4, user_name))
+                    break
+        else:
+            print("Good joke!!! ", get_message(0))
+            break
+
+
 def game_even(config: dict, name: str):
     count_success = 0
     while True or count_success <= 3:
@@ -81,7 +113,7 @@ def game_even(config: dict, name: str):
                     break
             else:
                 if answer:    
-                    print(get_message(1, name))
+                    print(get_message(1), get_message(4, name))
                     break
                 else:
                     print(get_message(0))
@@ -92,95 +124,60 @@ def game_even(config: dict, name: str):
 
 
 def game_calc(config: dict, name):
-    count_success = 0
-    while True or count_success <= 3:
-        brain_answer, answer, correct_answer = game(config, eval)
-        if correct_answer:
-            if (brain_answer == int(answer)):
-                count_success += 1
-                print(get_message(2))
-                if count_success == 3:
-                    print(get_message(count_success, name))
-                    break
-            else:
-                print(f"'{answer}' {get_message(5)} '{brain_answer}'.") 
-                print(get_message(4, name))
-                break
-        else:
-            print("Good joke!!! ", get_message(0))
-            break
+    play_game(config, eval, name)
 
 
 def game_gcd(config, name):
-    count_success = 0
-    while True or count_success <= 3:
-        brain_answer, answer, correct_answer = game(config, common_divisor)
-        if correct_answer:
-            if (brain_answer == int(answer)):
-                count_success += 1
-                print(get_message(2))
-                if count_success == 3:
-                    print(get_message(count_success, name))
-                    break
-            else:
-                print(f"'{answer}' {get_message(5)} '{brain_answer}'.") 
-                print(get_message(4, name))
-                break
-        else:
-            print("Good joke!!! ", get_message(0))
-            break
+    play_game(config, common_divisor, name)
 
 
 def game_progression(config, name):
+    play_game(config, find_num_progression, name)
+
+
+def game_prime(config, name):
     count_success = 0
     while True or count_success <= 3:
-        brain_answer, answer, correct_answer = game(config, find_num_progression)
+        brain_answer, answer, correct_answer = game(config, is_prime)
         if correct_answer:
-            if (brain_answer == int(answer)):
+            if (brain_answer and answer) or (not brain_answer and not answer):
                 count_success += 1
                 print(get_message(2))
                 if count_success == 3:
                     print(get_message(count_success, name))
                     break
             else:
-                print(f"'{answer}' {get_message(5)} '{brain_answer}'.") 
-                print(get_message(4, name))
-                break
+                if answer:    
+                    print(get_message(1), get_message(4, name))
+                    break
+                else:
+                    print(get_message(0))
+                    break
         else:
             print("Good joke!!! ", get_message(0))
             break
 
 
 def welcome_and_name() -> str:
-    print("\tWelcome to the Brain Games!")
-    name = prompt.string("\tMay I have your name? ")
-    print(f" Hello, {name}!")
+    print("Welcome to the Brain Games!")
+    name = prompt.string("May I have your name? ")
+    print(f"Hello, {name}!")
     return name
  
 
 def get_game(game_name: str):
-   game_dict = {}
+   keys = [game_name, 'rule', 'question', 'answer']
    if game_name == "even":
-       game_dict[game_name] = game_even
-       game_dict["rule"] = rule_even
-       game_dict["question"] = get_question_even
-       game_dict["answer"] = check_answer_even
+       values = [game_even, rule_even, get_question_even, check_answer_even]
    elif game_name == "calc":
-       game_dict[game_name] = game_calc
-       game_dict["rule"] = rule_calc
-       game_dict["question"] = get_question_calc
-       game_dict["answer"] = check_answer_calc
+       values = [game_calc, rule_calc, get_question_calc, check_answer_calc]
    elif game_name == "gcd":
-       game_dict[game_name] = game_gcd
-       game_dict["rule"] = rule_gcd
-       game_dict["question"] = get_question_gcd
-       game_dict["answer"] = check_answer_calc
+       values = [game_gcd, rule_gcd, get_question_gcd, check_answer_calc]
    elif game_name == "progression":
-       game_dict[game_name] = game_progression
-       game_dict["rule"] = rule_progression
-       game_dict["question"] = get_question_progression
-       game_dict["answer"] = check_answer_calc
-   return game_dict
+       values = [game_progression, rule_progression, get_question_progression, check_answer_calc]
+   else:
+       values = [game_prime, rule_prime, get_question_even, check_answer_even]
+   return dict(zip(keys, values))
 
 
 def start_game(game: str):
