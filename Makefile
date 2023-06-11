@@ -16,6 +16,9 @@ brain-calc:
 brain-gcd:
 	poetry run brain-gcd
 
+brain-progression:
+	poetry run brain-progression
+
 build:
 	poetry build
 
@@ -28,7 +31,7 @@ package-install:
 make lint8:
 	poetry run flake8 brain_games
 
-make flake-game:
+make flake8:
 	poetry run flake8 brain_games/game.py
 
 .PHONY: install test

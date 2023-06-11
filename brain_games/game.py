@@ -1,6 +1,6 @@
 import prompt
-from brain_games.games.rule import rule_even, rule_calc, rule_gcd
-from brain_games.games.question import get_question_even, get_question_calc, get_question_gcd
+from brain_games.games.rule import rule_even, rule_calc, rule_gcd, rule_progression
+from brain_games.games.question import get_question_even, get_question_calc, get_question_gcd, get_question_progression
 from brain_games.games.answer import check_answer_even, check_answer_calc
 
 
@@ -32,6 +32,25 @@ def common_divisor(numbers: str):
         for i in range(1, middle):
             if int(num1) % i == 0 and int(num2) % i == 0:
                 result = i
+    return result
+
+
+def get_int(item: str):
+    return item if not item.isnumeric() else int(item)
+
+
+def find_num_progression(numbers: str):
+    num_list = list(map(get_int, numbers.split()))
+    diff = num_list[1] - num_list[0] if not isinstance(num_list[0] * num_list[1], str) else num_list[-1] - num_list[-2]
+    result = 0
+    if not str(num_list[0]).isnumeric():
+        result = num_list[1] - diff
+    else:
+        for i in num_list:
+            if isinstance(i, str):
+                break
+            result = i
+        result += diff
     return result
 
 
@@ -112,6 +131,26 @@ def game_gcd(config, name):
             break
 
 
+def game_progression(config, name):
+    count_success = 0
+    while True or count_success <= 3:
+        brain_answer, answer, correct_answer = game(config, find_num_progression)
+        if correct_answer:
+            if (brain_answer == int(answer)):
+                count_success += 1
+                print(get_message(2))
+                if count_success == 3:
+                    print(get_message(count_success, name))
+                    break
+            else:
+                print(f"'{answer}' {get_message(5)} '{brain_answer}'.") 
+                print(get_message(4, name))
+                break
+        else:
+            print("Good joke!!! ", get_message(0))
+            break
+
+
 def welcome_and_name() -> str:
     print("\tWelcome to the Brain Games!")
     name = prompt.string("\tMay I have your name? ")
@@ -135,6 +174,11 @@ def get_game(game_name: str):
        game_dict[game_name] = game_gcd
        game_dict["rule"] = rule_gcd
        game_dict["question"] = get_question_gcd
+       game_dict["answer"] = check_answer_calc
+   elif game_name == "progression":
+       game_dict[game_name] = game_progression
+       game_dict["rule"] = rule_progression
+       game_dict["question"] = get_question_progression
        game_dict["answer"] = check_answer_calc
    return game_dict
 

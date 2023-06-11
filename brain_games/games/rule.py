@@ -17,3 +17,10 @@ def rule_gcd():
     print("Find the greatest common divisor of given numbers.")
     print(" -- " * 10)
     print()
+
+def rule_progression():
+    print()
+    print(" ### " * 10)
+    print("What number is missing in the progression?")
+    print(" ### " * 10)
+    print()
