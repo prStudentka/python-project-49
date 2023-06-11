@@ -47,7 +47,7 @@ def common_divisor(numbers: str):
 
 
 def get_int(item: str):
-    return item if not item.isnumeric() else int(item)
+    return item if not isinstance(item, str) or not item.isnumeric() else int(item)
 
 
 def find_num_progression(numbers: str):
@@ -95,35 +95,23 @@ def play_game(config, func, user_name, answer_yes = False):
                     print(f"'{answer}' {get_message(5)} '{brain_answer}'.") 
                     print(get_message(4, user_name))
                     break
+                else:
+                    if answer:
+                        print(f"{get_message(1)}\n{get_message(4, user_name)}")
+                        break
+                    else:
+                        print(f"'no' {get_message(5)} 'yes'.\n{get_message(4, user_name)}")
+                        break
         else:
             print("Good joke!!! ", get_message(0))
             break
 
 
 def game_even(config: dict, name: str):
-    count_success = 0
-    while True or count_success <= 3:
-        brain_answer, answer, correct_answer = game(config, is_even)
-        if correct_answer:
-            if (brain_answer and answer) or (not brain_answer and not answer):
-                count_success += 1
-                print(get_message(2))
-                if count_success == 3:
-                    print(get_message(count_success, name))
-                    break
-            else:
-                if answer:    
-                    print(get_message(1), get_message(4, name))
-                    break
-                else:
-                    print(get_message(0))
-                    break
-        else:
-            print("Good joke!!! ", get_message(0))
-            break
+    play_game(config, is_even, name, True)
 
 
-def game_calc(config: dict, name):
+def game_calc(config: dict, name: str):
     play_game(config, eval, name)
 
 
@@ -136,26 +124,7 @@ def game_progression(config, name):
 
 
 def game_prime(config, name):
-    count_success = 0
-    while True or count_success <= 3:
-        brain_answer, answer, correct_answer = game(config, is_prime)
-        if correct_answer:
-            if (brain_answer and answer) or (not brain_answer and not answer):
-                count_success += 1
-                print(get_message(2))
-                if count_success == 3:
-                    print(get_message(count_success, name))
-                    break
-            else:
-                if answer:    
-                    print(get_message(1), get_message(4, name))
-                    break
-                else:
-                    print(get_message(0))
-                    break
-        else:
-            print("Good joke!!! ", get_message(0))
-            break
+    play_game(config, is_prime, name, True)
 
 
 def welcome_and_name() -> str:
