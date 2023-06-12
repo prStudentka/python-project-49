@@ -1,8 +1,8 @@
 def rule_even():
-    print(" + " * 14)
+    # print(" + " * 10)
     print("Answer 'yes' if the number is even, otherwise answer 'no'.")
-    print(" + " * 14)
-    print()
+    # print(" + " * 10)
+    # print()
 
 
 def rule_calc():
@@ -13,21 +13,21 @@ def rule_calc():
 
 
 def rule_gcd():
-    print(" -- " * 12)
+    print(" -- " * 10)
     print("Find the greatest common divisor of given numbers.")
-    print(" -- " * 12)
+    print(" -- " * 10)
     print()
 
 
 def rule_progression():
     print()
-    print(" # # " * 12)
+    print(" # # " * 10)
     print("What number is missing in the progression?")
-    print(" # # " * 12)
+    print(" # # " * 10)
     print()
 
 def rule_prime():
     print()
-    print(" ~ " * 15)
+    print(" ~ " * 10)
     print("Answer 'yes' if given number is prime. Otherwise answer 'no'.")
     print()
