@@ -107,7 +107,7 @@ def say_wrong(brain, answer, name):
 def play_game(config):
     count_success = 0
     game_dict, user_name = config()
-    while count_success <= 3:
+    while count_success < 3:
         brain_answer, answer, correct_answer = game(game_dict)
         if correct_answer:
             if (brain_answer == get_int(answer)):
