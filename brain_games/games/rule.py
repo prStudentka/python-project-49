@@ -13,5 +13,6 @@ def rule_gcd():
 def rule_progression():
     print("What number is missing in the progression?")
 
+
 def rule_prime():
     print('Answer "yes" if given number is prime. Otherwise answer "no".')
