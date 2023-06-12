@@ -134,29 +134,29 @@ def get_game(game_name: str):
     keys = ['rule', 'question', 'answer', 'func']
     if game_name == "even":
         values = [rule_even,
-                get_quest_even,
-                check_answer_even,
-                is_even]
+                  get_quest_even,
+                  check_answer_even,
+                  is_even]
     elif game_name == "calc":
         values = [rule_calc,
-                get_quest_calc,
-                check_answer_calc,
-                eval]
+                  get_quest_calc,
+                  check_answer_calc,
+                  eval]
     elif game_name == "gcd":
         values = [rule_gcd,
-                get_quest_gcd,
-                check_answer_calc,
-                common_divisor]
+                  get_quest_gcd,
+                  check_answer_calc,
+                  common_divisor]
     elif game_name == "progression":
         values = [rule_progression,
-                get_quest_progression,
-                check_answer_calc,
-                find_num_progression]
+                  get_quest_progression,
+                  check_answer_calc,
+                  find_num_progression]
     else:
         values = [rule_prime,
-                get_quest_even,
-                check_answer_even,
-                is_prime]
+                  get_quest_even,
+                  check_answer_even,
+                  is_prime]
     return dict(zip(keys, values))
 
 
