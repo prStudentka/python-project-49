@@ -30,3 +30,6 @@ package-install:
 
 lint:
 	poetry run flake8 brain_games
+
+asciinema:
+	asciinema rec -t "brain-game"
