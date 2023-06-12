@@ -29,7 +29,7 @@ def is_even(number: str) -> bool:
 
 def is_prime(number: str) -> bool:
     if int(number) == 1:
-        return True
+        return False
     else:
         length = int(number) // 2 + 1 if int(number) <= 10 else 11
         for i in range(2, length):
