@@ -21,7 +21,7 @@ def has_answer(text: str) -> bool:
 
 def check_answer_even(answer: str) -> list:
     if not has_answer(answer):
-       return []
+        return []
     user_answer = answer.lower()
     __correct = (is_correct_answer(user_answer),)
     if __correct[0]:
@@ -31,7 +31,7 @@ def check_answer_even(answer: str) -> list:
 
 def check_answer_calc(answer: str) -> list:
     if not has_answer(answer):
-       return []
+        return []
     if answer.isnumeric():
         __correct = (True,)
     else:

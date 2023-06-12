@@ -4,7 +4,7 @@ import random
 def get_number(begin, end):
     num = []
     for i in range(6):
-       num.append(random.randint(begin, end))
+        num.append(random.randint(begin, end))
     number = random.choice(list(set(num)))
     return number
 
@@ -37,9 +37,9 @@ def get_question_progression():
     num = get_number(0, 30)
     result = str(num) if pos > 0 else ".."
     for i in range(1, length + 1):
-       num += diff
-       if pos == i:
-           result += " .."
-       else:
-           result += f" {num}"
+        num += diff
+        if pos == i:
+            result += " .."
+        else:
+            result += f" {num}"
     return result

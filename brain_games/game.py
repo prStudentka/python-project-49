@@ -1,6 +1,8 @@
 import prompt
-from brain_games.games.rule import rule_even, rule_calc, rule_gcd, rule_progression, rule_prime
-from brain_games.games.question import get_question_even, get_question_calc, get_question_gcd, get_question_progression
+from brain_games.games.rule import rule_even, rule_calc 
+from brain_games.games.rule import rule_gcd, rule_progression, rule_prime
+from brain_games.games.question import get_question_even, get_question_calc
+from brain_games.games.question import get_question_gcd, get_question_progression
 from brain_games.games.answer import check_answer_even, check_answer_calc
 
 
@@ -53,8 +55,9 @@ def common_divisor(numbers: str):
 
 
 def get_int(item: str):
-    return item if not isinstance(item, str) or not item.isnumeric() else int(item)
-
+    if not isinstance(item, str) or not item.isnumeric():
+        return item
+    return int(item)
 
 def find_num_progression(numbers: str):
     num_list = list(map(get_int, numbers.split()))
@@ -89,34 +92,34 @@ def game(request: dict) -> list:
     return result
 
 
+def say_wrong(answer, name):
+    if isinstance(answer, int)
+        print(f"'{answer}' {get_message(5)} '{brain_answer}'.")
+        print(get_message(4, name))
+    else:
+        if answer:
+            print(f"{get_message(1)}\n{get_message(4, name)}")
+        else:
+            print(f"'no' {get_message(5)} 'yes'.\n{get_message(4, name)}")
+            
+
 def play_game(config):
     count_success = 0
     game_dict, user_name = config()
-    answer_yes = game_dict["yes"]
     while count_success <= 3:
         brain_answer, answer, correct_answer = game(game_dict)
         if correct_answer:
             if (brain_answer == get_int(answer)):
                 count_success += 1
                 print(get_message(2))
-                if count_success == 3:
-                    print(get_message(count_success, user_name))
-                    break
             else:
-                if not answer_yes:
-                    print(f"'{answer}' {get_message(5)} '{brain_answer}'.")
-                    print(get_message(4, user_name))
-                    break
-                else:
-                    if answer:
-                        print(f"{get_message(1)}\n{get_message(4, user_name)}")
-                        break
-                    else:
-                        print(f"'no' {get_message(5)} 'yes'.\n{get_message(4, user_name)}")
-                        break
+                say_wrong(answer, user_name)
+                break
         else:
             print("Good joke!!! ", get_message(0))
             break
+    else:
+        print(get_message(count_success, user_name))
 
 
 def greetings() -> str:
@@ -127,47 +130,37 @@ def greetings() -> str:
 
 
 def get_game(game_name: str):
-    keys = ['yes', 'rule', 'question', 'answer', 'func']
+    keys = ['rule', 'question', 'answer', 'func']
     if game_name == "even":
-        values = [
-                True, 
+        values = [ 
                 rule_even, 
                 get_question_even, 
                 check_answer_even, 
-                is_even
-                ]
+                is_even]
     elif game_name == "calc":
         values = [
-                False, 
                 rule_calc, 
                 get_question_calc, 
                 check_answer_calc, 
-                eval
-                ]
+                eval]
     elif game_name == "gcd":
         values = [
-                False, 
                 rule_gcd, 
                 get_question_gcd, 
                 check_answer_calc, 
-                common_divisor
-                ]
+                common_divisor]
     elif game_name == "progression":
         values = [
-                False, 
                 rule_progression, 
                 get_question_progression, 
                 check_answer_calc, 
-                find_num_progression
-                ]
+                find_num_progression]
     else:
         values = [
-                True, 
                 rule_prime, 
                 get_question_even, 
                 check_answer_even, 
-                is_prime
-                ]
+                is_prime]
     return dict(zip(keys, values))
 
 
