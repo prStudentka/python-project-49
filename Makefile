@@ -31,10 +31,7 @@ publish:
 package-install:
 	python3 -m pip install --user dist/*.whl
 
-make lint8:
+make lint:
 	poetry run flake8 brain_games
-
-make flake8:
-	poetry run flake8 brain_games/game.py
 
 .PHONY: install test
