@@ -67,7 +67,7 @@ def find_num_progression(numbers: str):
 
 def print_question(func):
     question = func()
-    print('Question: ', question)
+    print('Question:', question)
     return question
 
 
