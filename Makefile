@@ -1,9 +1,6 @@
 install:
 	poetry install
 
-test:
-	poetry run pytest
-
 brain-games:
 	poetry run brain-games
 
@@ -31,7 +28,7 @@ publish:
 package-install:
 	python3 -m pip install --user dist/*.whl
 
-make lint:
+lint:
 	poetry run flake8 brain_games
 
-.PHONY: install test
+.PHONY: install
