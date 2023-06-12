@@ -9,11 +9,11 @@ def get_number(begin, end):
     return number
 
 
-def get_question_even():
+def get_quest_even():
     return get_number(1, 120)
 
 
-def get_question_calc():
+def get_quest_calc():
     act = random.choice(["+", "-", "*"])
     num1 = get_number(1, 20)
     num2 = get_number(0, 11)
@@ -23,14 +23,14 @@ def get_question_calc():
     return question
 
 
-def get_question_gcd():
-    num1 = get_number(1, get_question_even())
+def get_quest_gcd():
+    num1 = get_number(1, get_quest_even())
     num2 = get_number(1, get_number(2, num1 + 2))
     question = f"{num1} {num2}"
     return question
 
 
-def get_question_progression():
+def get_quest_progression():
     length = get_number(5, 11)
     pos = get_number(0, length)
     diff = get_number(1, 11)

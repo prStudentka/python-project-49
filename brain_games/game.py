@@ -1,8 +1,8 @@
 import prompt
-from brain_games.games.rule import rule_even, rule_calc 
+from brain_games.games.rule import rule_even, rule_calc
 from brain_games.games.rule import rule_gcd, rule_progression, rule_prime
-from brain_games.games.question import get_question_even, get_question_calc
-from brain_games.games.question import get_question_gcd, get_question_progression
+from brain_games.games.question import get_quest_even, get_quest_calc
+from brain_games.games.question import get_quest_gcd, get_quest_progression
 from brain_games.games.answer import check_answer_even, check_answer_calc
 
 
@@ -133,34 +133,29 @@ def greetings() -> str:
 def get_game(game_name: str):
     keys = ['rule', 'question', 'answer', 'func']
     if game_name == "even":
-        values = [ 
-                rule_even, 
-                get_question_even, 
-                check_answer_even, 
+        values = [rule_even,
+                get_quest_even,
+                check_answer_even,
                 is_even]
     elif game_name == "calc":
-        values = [
-                rule_calc, 
-                get_question_calc, 
-                check_answer_calc, 
+        values = [rule_calc,
+                get_quest_calc,
+                check_answer_calc,
                 eval]
     elif game_name == "gcd":
-        values = [
-                rule_gcd, 
-                get_question_gcd, 
-                check_answer_calc, 
+        values = [rule_gcd,
+                get_quest_gcd,
+                check_answer_calc,
                 common_divisor]
     elif game_name == "progression":
-        values = [
-                rule_progression, 
-                get_question_progression, 
-                check_answer_calc, 
+        values = [rule_progression,
+                get_quest_progression,
+                check_answer_calc,
                 find_num_progression]
     else:
-        values = [
-                rule_prime, 
-                get_question_even, 
-                check_answer_even, 
+        values = [rule_prime,
+                get_quest_even,
+                check_answer_even,
                 is_prime]
     return dict(zip(keys, values))
 
