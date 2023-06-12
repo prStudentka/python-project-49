@@ -52,7 +52,7 @@ def get_int(item: str):
 
 def find_num_progression(numbers: str):
    num_list = list(map(get_int, numbers.split()))
-   if not isinstance(num_list[0] * num_list[1], str) 
+   if not isinstance(num_list[0] * num_list[1], str): 
        diff = num_list[1] - num_list[0] 
    else: 
        diff = num_list[-1] - num_list[-2]
