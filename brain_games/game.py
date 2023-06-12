@@ -9,11 +9,10 @@ from brain_games.games.answer import check_answer_even, check_answer_calc
 def get_message(num, name="gamer"):
     message = ""
     match num:
-        case 1: message = "'yes' is wrong answer ;(. Correct answer was 'no'."
+        case 1: message = "is wrong answer ;(. Correct answer was"
         case 2: message = "Correct!"
         case 3: message = f"Congratulations, {name}!"
         case 4: message = f"Let's try again, {name}!"
-        case 5: message = "is wrong answer ;(. Correct answer was"
         case _: message = "Wrong answer ;(. Let's try again"
     return message
 
@@ -59,6 +58,7 @@ def get_int(item: str):
         return item
     return int(item)
 
+
 def find_num_progression(numbers: str):
     num_list = list(map(get_int, numbers.split()))
     if not isinstance(num_list[0] * num_list[1], str):
@@ -92,16 +92,17 @@ def game(request: dict) -> list:
     return result
 
 
-def say_wrong(answer, name):
-    if isinstance(answer, int)
-        print(f"'{answer}' {get_message(5)} '{brain_answer}'.")
-        print(get_message(4, name))
-    else:
+def say_wrong(brain, answer, name):
+    if isinstance(answer, bool):
         if answer:
-            print(f"{get_message(1)}\n{get_message(4, name)}")
+            answer = 'yes'
+            brain = 'no'
         else:
-            print(f"'no' {get_message(5)} 'yes'.\n{get_message(4, name)}")
-            
+            answer = 'no'
+            brain = 'yes'
+    print(f"'{answer}' {get_message(1)} '{brain}'.")
+    print(get_message(4, name))
+
 
 def play_game(config):
     count_success = 0
@@ -113,7 +114,7 @@ def play_game(config):
                 count_success += 1
                 print(get_message(2))
             else:
-                say_wrong(answer, user_name)
+                say_wrong(brain_answer, answer, user_name)
                 break
         else:
             print("Good joke!!! ", get_message(0))
