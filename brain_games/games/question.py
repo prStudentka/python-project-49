@@ -27,7 +27,7 @@ def get_quest_gcd():
     num1 = get_number(1, get_quest_even())
     num2 = get_number(2, num1 * 2)
     if num1 == num2:
-        num2 += get_quest_even() 
+        num2 += get_quest_even()
     question = f"{num1} {num2}"
     return question
 
