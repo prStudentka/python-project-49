@@ -10,10 +10,10 @@ def get_rule():
 
 def common_divisor(numbers: str):
     num1, num2 = numbers.split()
-    max_num = max(int(num1), int(num2)) + 1
+    max_num = max(int(num1), int(num2))
     min_num = min(int(num1), int(num2))
     result = 0
-    if (max_num - 1) % min_num == 0:
+    if not (max_num % min_num):
         result = min_num
     else:
         middle = min_num // 2 + 1

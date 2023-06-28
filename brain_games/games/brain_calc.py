@@ -9,30 +9,36 @@ def get_rule():
 
 
 def check_nums(func):
-    old_act = ''
-
     def inner():
-        nonlocal old_act
         val = func()
-        while old_act == val['act']:
-            val['act'] = get_act()
-        old_act = val['act']
-        if val['act'] == '-':
-            if val['num1'] < val['num2']:
-                tmp = val['num1']
-                val['num1'] = val['num2']
-                val['num2'] = tmp
-        if val['act'] == '*':
-            if val['num2'] > 10:
-                val['num2'] //= 10
+        if val['act'] == '-' and val['num1'] < val['num2']:
+            tmp = val['num1']
+            val['num1'] = val['num2']
+            val['num2'] = tmp
+        if val['act'] == '*' and val['num2'] > 10:
+            val['num2'] //= 10
         return val
     return inner
 
 
+def memoize_act(func):
+    old_act = ''
+
+    def inner():
+        nonlocal old_act
+        act = func()
+        while old_act == act:
+            act = func()
+        old_act = act
+        return act
+    return inner
+
+
 def get_number():
-    return rnd.randint(1, 120)
+    return rnd.randint(1, 100)
 
 
+@memoize_act
 def get_act():
     return rnd.choice(['+', '-', '*'])
 

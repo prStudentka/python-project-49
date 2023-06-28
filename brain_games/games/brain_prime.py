@@ -11,11 +11,10 @@ def get_rule():
 def is_prime(number: str) -> bool:
     if int(number) == 1:
         return False
-    else:
-        length = int(number) // 2 + 1 if int(number) <= 10 else 11
-        for i in range(2, length):
-            if int(number) % i == 0:
-                return False
+    length = int(number) // 2 + 1 if int(number) <= 10 else 11
+    for i in range(2, length):
+        if int(number) % i == 0:
+            return False
     return True
 
 

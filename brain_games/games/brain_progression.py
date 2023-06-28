@@ -26,7 +26,7 @@ def get_progression():
 
 
 def get_pos(length):
-    return get_number(0, length-1)
+    return get_number(0, length - 1)
 
 
 def get_question(progression: list, pos) -> str:
