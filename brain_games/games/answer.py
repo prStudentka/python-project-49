@@ -2,10 +2,6 @@ __ANSWER_LIST = ['yes', 'no']
 __correct = ()
 
 
-def get_transform_answer(answer: str) -> bool:
-    return True if answer == __ANSWER_LIST[0] else False
-
-
 def is_correct_answer(answer: str) -> bool:
     if answer in __ANSWER_LIST:
         return True
@@ -13,23 +9,30 @@ def is_correct_answer(answer: str) -> bool:
 
 
 def has_answer(text: str) -> bool:
-    if len(text.strip()) > 0:
+    try:
+        if len(text.strip()) == 0:
+            raise Exception
+    except ValueError:
+        print('raise Exception: No user answer')
+    finally:
         return True
-    raise Exception("No user answer")
-    return False
 
 
-def check_answer_even(answer: str) -> list:
+def check_answer(user_answer, brain_answer):
+    if isinstance(brain_answer, str):
+        return check_answer_str(user_answer)
+    return check_answer_int(user_answer)
+
+
+def check_answer_str(answer: str) -> list:
     if not has_answer(answer):
         return []
-    user_answer = answer.lower()
+    user_answer = answer.lower().strip()
     __correct = (is_correct_answer(user_answer),)
-    if __correct[0]:
-        user_answer = get_transform_answer(user_answer)
     return user_answer, __correct[0]
 
 
-def check_answer_calc(answer: str) -> list:
+def check_answer_int(answer: str) -> list:
     if not has_answer(answer):
         return []
     if answer.isnumeric():
@@ -37,3 +40,6 @@ def check_answer_calc(answer: str) -> list:
     else:
         __correct = (False,)
     return answer, __correct[0]
+
+
+__all__ = ['check_answer']

@@ -7,3 +7,22 @@ https://asciinema.org/a/9nbtaiZva4D3dyYgy1mkz49uI
 https://asciinema.org/a/NEC635aoSR3KehzySCBmfkuIl
 https://asciinema.org/a/bX7DTVTuku2Dny6cfsWvq3TPT
 https://asciinema.org/a/AGQ7fKImvQ6lZFtZEcEfV7K5q
+
+Instructions:
+Five brain-games based on mathematical tasks.
+Pick up the game: brain-even, brain-prime, brain-gcd, brain-calc, brain-progression.
+User writing answer on task.
+Players have played three rounds.
+If answer is not correct - the Game's Over!
+
+Installation:
+Make sure you are running at least Python 3.10.0
+Install using pip:  pip3 install brain-games
+
+Start Game
+To start the game, run either:
+brain-even
+brain-prime
+brain-gcd
+brain-calc
+brain-progression
