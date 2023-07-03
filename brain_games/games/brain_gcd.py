@@ -1,4 +1,5 @@
 import random as rnd
+from math import gcd 
 
 
 __RULE = 'Find the greatest common divisor of given numbers.'
@@ -6,21 +7,6 @@ __RULE = 'Find the greatest common divisor of given numbers.'
 
 def get_rule():
     return __RULE
-
-
-def common_divisor(numbers: str):
-    num1, num2 = numbers.split()
-    max_num = max(int(num1), int(num2))
-    min_num = min(int(num1), int(num2))
-    result = 0
-    if not (max_num % min_num):
-        result = min_num
-    else:
-        middle = min_num // 2 + 1
-        for i in range(1, middle):
-            if int(num1) % i == 0 and int(num2) % i == 0:
-                result = i
-    return result
 
 
 def check_nums(func):
@@ -42,24 +28,11 @@ def make_example():
             'num2': get_number()}
 
 
-def get_question():
+def get_pairQA():
     item = make_example()
-    return f"{item['num1']} {item['num2']}"
-
-
-def get_answer(question):
-    return common_divisor(question)
-
-
-def make_QA(question, answer):
+    question = f"{item['num1']} {item['num2']}"
+    answer = gcd(item['num1'], item['num2'])
     return (question, answer)
-
-
-def get_pairQA() -> list:
-    question = get_question()
-    answer = get_answer(question)
-    pair = make_QA(question, answer)
-    return pair
 
 
 __all__ = ['get_pairQA']
