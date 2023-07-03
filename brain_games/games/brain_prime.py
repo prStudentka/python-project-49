@@ -18,37 +18,7 @@ def is_prime(number: str) -> bool:
     return True
 
 
-def check_equal(func):
-    old_num = [0]
-
-    def inner():
-        nonlocal old_num
-        val = list(func())
-        if old_num == val:
-            val[0] += 1
-        old_num = val
-        return val[0]
-    return inner
-
-
-@check_equal
-def get_question():
-    yield rnd.randint(1, 120)
-
-
-def get_answer(question):
-    return 'yes' if is_prime(question) else 'no'
-
-
-def make_QA(question, answer):
+def get_pairQA():
+    question = rnd.randint(1, 120)
+    answer = 'yes' if is_prime(question) else 'no'
     return (question, answer)
-
-
-def get_pairQA() -> list:
-    question = get_question()
-    answer = get_answer(question)
-    pair = make_QA(question, answer)
-    return pair
-
-
-__all__ = ['get_pairQA']

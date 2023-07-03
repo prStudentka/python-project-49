@@ -20,32 +20,11 @@ def make_example():
             'diff': get_number(1, 11)}
 
 
-def get_progression():
+def get_pairQA():
     item = make_example()
-    return [i * item['num1'] + item['diff'] for i in range(item['length'])]
-
-
-def get_pos(length):
-    return get_number(0, length - 1)
-
-
-def get_question(progression: list, pos) -> str:
-    num = get_answer(progression, pos)
-    return ' '.join(map(str, progression)).replace(str(num), '..', 1)
-
-
-def get_answer(progression, pos):
-    return progression[pos]
-
-
-def make_QA(question, answer):
+    progression = [i * item['num1'] + item['diff']
+                   for i in range(item['length'])]
+    pos = get_number(0, item['length'] - 1)
+    answer = progression[pos]
+    question = ' '.join(map(str, progression)).replace(str(answer), '..', 1)
     return (question, answer)
-
-
-def get_pairQA() -> list:
-    progression = get_progression()
-    pos = get_pos(len(progression))
-    question = get_question(progression, pos)
-    answer = get_answer(progression, pos)
-    pair = make_QA(question, answer)
-    return pair
