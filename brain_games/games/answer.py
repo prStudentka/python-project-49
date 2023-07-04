@@ -39,7 +39,7 @@ def check_answer_int(answer: str) -> list:
         __correct = (True,)
     else:
         __correct = (False,)
-    return answer, __correct[0]
+    return int(answer), __correct[0]
 
 
 __all__ = ['check_answer']

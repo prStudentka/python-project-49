@@ -2,12 +2,6 @@ import prompt
 from brain_games.games.answer import check_answer
 
 
-def get_int(item: str):
-    if not isinstance(item, str) or not item.isnumeric():
-        return item
-    return int(item)
-
-
 def greetings():
     print('Welcome to the Brain Games!')
 
@@ -25,7 +19,7 @@ def start_game(game):
         if not correct:
             print("Good joke!!! Wrong answer ;(. Let's try again")
             break
-        if brain_answer == get_int(answer):
+        if brain_answer == answer:
             print('Correct!')
         else:
             print(f"'{answer}' is wrong answer ;(. ",

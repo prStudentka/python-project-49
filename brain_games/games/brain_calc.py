@@ -9,17 +9,15 @@ def get_rule():
     return __RULE
 
 
-def make_example():
-    return {'num1': rnd.randint(1, 20),
-            'act': rnd.choice(['+', '-', '*']),
-            'num2': rnd.randint(0, 10)}
-
-
 def get_pairQA():
-    item = make_example()
-    question = f"{item['num1']} {item['act']} {item['num2']}"
+    num1 = rnd.randint(1, 20)
+    act = rnd.choice(['+', '-', '*'])
+    num2 = rnd.randint(0, 10)
+    if act == '-' and num2 > num1:
+        num1, num2 = num2, num1
+    question = f'{num1} {act} {num2}'
     dict_act = {'+': add,
                 '-': sub,
                 '*': mul}
-    answer = dict_act.get(item['act'])(item['num1'], item['num2'])
+    answer = dict_act.get(act)(num1, num2)
     return (question, answer)
