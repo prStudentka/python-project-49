@@ -1,5 +1,4 @@
 import prompt
-from brain_games.answer import check_answer
 
 
 __ROUND = 3
