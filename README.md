@@ -19,11 +19,11 @@ Installation:
 Make sure you are running at least Python 3.10.0
 Install using pip:  pip3 install brain-games
 or
-git clone  [Repository github]
-install: poetry install
-build: poetry build
-package-install: python3 -m pip install --user --force dist/*.whl
-brain-games: poetry run brain-games
+* git clone  <a href="https://github.com/prStudentka/python-project-49">Repository github</a> <br>
+* install: poetry install <br>
+* build: poetry build <br>
+* package-install: python3 -m pip install --user --force dist/*.whl <br>
+* brain-games: poetry run brain-games
 
 Start Game
 To start the game, run either:
