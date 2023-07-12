@@ -2,6 +2,8 @@ import random as rnd
 
 
 __RULE = 'Answer "yes" if the number is even, otherwise answer "no".'
+_MIN_NUM = 1
+_MAX_NUM = 120
 
 
 def get_rule():
