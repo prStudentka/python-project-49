@@ -13,11 +13,10 @@ def start_game(game):
     for _ in range(__ROUND):
         question, brain_answer = game.get_pairQA()
         print('Question:', question)
-        user_answer = prompt.string('Your answer: ')
-        answer, correct = check_answer(user_answer, brain_answer)
-        if not correct:
-            print("Good joke!!! Wrong answer ;(. Let's try again")
-            break
+        if isinstance(brain_answer, int):
+            answer = prompt.integer('Your answer: ')
+        else:
+            answer = prompt.string('Your answer: ').lower().strip()
         if brain_answer == answer:
             print('Correct!')
         else:
