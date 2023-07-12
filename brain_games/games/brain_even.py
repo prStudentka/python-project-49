@@ -15,6 +15,6 @@ def is_even(number: str) -> bool:
 
 
 def get_pairQA():
-    question = rnd.randint(1, 120)
+    question = rnd.randint(_MIN_NUM, _MAX_NUM)
     answer = 'yes' if is_even(question) else 'no'
     return (question, answer)
