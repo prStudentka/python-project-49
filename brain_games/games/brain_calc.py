@@ -11,13 +11,13 @@ def get_rule():
 
 def get_pairQA():
     num1 = rnd.randint(1, 20)
-    act = rnd.choice(['+', '-', '*'])
+    operation = rnd.choice(['+', '-', '*'])
     num2 = rnd.randint(0, 10)
-    if act == '-' and num2 > num1:
+    if operation == '-' and num2 > num1:
         num1, num2 = num2, num1
-    question = f'{num1} {act} {num2}'
-    dict_act = {'+': add,
-                '-': sub,
-                '*': mul}
-    answer = dict_act.get(act)(num1, num2)
+    question = f'{num1} {operation} {num2}'
+    dict_operation = {'+': add,
+                      '-': sub,
+                      '*': mul}
+    answer = dict_operation.get(operation)(num1, num2)
     return (question, answer)
