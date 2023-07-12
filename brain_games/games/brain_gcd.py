@@ -3,6 +3,8 @@ from math import gcd
 
 
 __RULE = 'Find the greatest common divisor of given numbers.'
+_MIN_NUM = 1
+_MAX_NUM = 120
 
 
 def get_rule():
@@ -19,7 +21,7 @@ def check_nums(func):
 
 
 def get_number():
-    return rnd.randint(1, 120)
+    return rnd.randint(_MIN_NUM, _MAX_NUM)
 
 
 @check_nums
@@ -33,6 +35,3 @@ def get_pairQA():
     question = f"{item['num1']} {item['num2']}"
     answer = gcd(item['num1'], item['num2'])
     return (question, answer)
-
-
-__all__ = ['get_pairQA']
