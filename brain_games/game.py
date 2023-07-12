@@ -1,5 +1,8 @@
 import prompt
-from brain_games.games.answer import check_answer
+from brain_games.answer import check_answer
+
+
+__ROUND = 3
 
 
 def start_game(game):
@@ -7,7 +10,7 @@ def start_game(game):
     user_name = prompt.string('May I have your name?')
     print(f'Hello, {user_name}!')
     print(game.get_rule())
-    for _ in range(3):
+    for _ in range(__ROUND):
         question, brain_answer = game.get_pairQA()
         print('Question:', question)
         user_answer = prompt.string('Your answer: ')
