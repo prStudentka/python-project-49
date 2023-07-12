@@ -6,6 +6,7 @@ __RULE = 'What is the result of the expression?'
 _MIN_NUM = 1
 _MAX_NUM = 10
 
+
 def get_rule():
     return __RULE
 
