@@ -2,6 +2,8 @@ import random as rnd
 
 
 __RULE = 'Answer "yes" if given number is prime. Otherwise answer "no".'
+_MIN_NUM = 1
+_MAX_NUM = 120
 
 
 def get_rule():
@@ -9,7 +11,7 @@ def get_rule():
 
 
 def is_prime(number: str) -> bool:
-    if int(number) == 1:
+    if int(number) == 1 or not int(number):
         return False
     length = int(number) // 2 + 1 if int(number) <= 10 else 11
     for i in range(2, length):
@@ -19,6 +21,6 @@ def is_prime(number: str) -> bool:
 
 
 def get_pairQA():
-    question = rnd.randint(1, 120)
+    question = rnd.randint(_MIN_NUM, _MAX_NUM)
     answer = 'yes' if is_prime(question) else 'no'
     return (question, answer)
