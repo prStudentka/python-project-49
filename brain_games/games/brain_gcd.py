@@ -11,23 +11,9 @@ def get_rule():
     return __RULE
 
 
-def check_nums(func):
-    def inner():
-        val = func()
-        while val['num1'] == val['num2']:
-            val['num1'] = get_number()
-        return val
-    return inner
-
-
-def get_number():
-    return rnd.randint(_MIN_NUM, _MAX_NUM)
-
-
-@check_nums
 def make_example():
-    return {'num1': get_number(),
-            'num2': get_number()}
+    return {'num1': rnd.randint(_MIN_NUM, _MAX_NUM),
+            'num2': rnd.randint(_MIN_NUM, _MAX_NUM)}
 
 
 def get_pairQA():
