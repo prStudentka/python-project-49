@@ -10,8 +10,8 @@ def get_rule():
     return __RULE
 
 
-def is_even(number: str) -> bool:
-    return int(number) % 2 == 0
+def is_even(number: int) -> bool:
+    return number % 2 == 0
 
 
 def get_pairQA():
