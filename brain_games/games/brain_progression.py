@@ -19,7 +19,7 @@ def get_pairQA():
                    for i in range(length)]
     pos = rnd.randint(0, length - 1)
     answer = progression[pos]
-    progress_str = [str(item) if index != pos else '...'
+    progress_str = [str(item) if index != pos else '..'
                     for index, item in enumerate(progression)]
     question = ' '.join(map(str, progress_str))
     return (question, answer)
