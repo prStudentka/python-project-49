@@ -1,7 +1,7 @@
 import prompt
 
 
-__ROUND = 3
+__COUNT_ROUNDS = 3
 
 
 def start_game(game):
@@ -9,7 +9,7 @@ def start_game(game):
     user_name = prompt.string('May I have your name?')
     print(f'Hello, {user_name}!')
     print(game.get_rule())
-    for _ in range(__ROUND):
+    for _ in range(__COUNT_ROUNDS):
         question, brain_answer = game.get_pairQA()
         print('Question:', question)
         if isinstance(brain_answer, int):
