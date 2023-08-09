@@ -13,14 +13,13 @@ def get_rule():
 
 
 def generate_progression(num, step, len):
-    return [i * num + step
-                for i in range(len)]
+    return [i * num + step for i in range(len)]
 
 
 def get_str_progression(progression, pos):
-    progress_str = [str(item) if index != pos else '..'
-                    for index, item in enumerate(progression)]
-    return ' '.join(map(str, progress_str))
+    val = enumerate(progression)
+    in_str = [str(item) if index != pos else '..' for index, item in val]
+    return ' '.join(map(str, in_str))
 
 
 def get_pair_QA():
@@ -28,7 +27,7 @@ def get_pair_QA():
     num1 = rnd.randint(_MIN_NUM, _MAX_NUM)
     step = rnd.randint(_MIN_STEP, _MAX_STEP)
     pos = rnd.randint(0, length - 1)
-    progression = generate_progression(num1, step, length)   
-    answer = progression[pos] 
+    progression = generate_progression(num1, step, length)
+    answer = progression[pos]
     question = get_str_progression(progression, pos)
     return (question, str(answer))
