@@ -11,7 +11,7 @@ def get_rule():
     return __RULE
 
 
-def get_pair_QA():    
+def get_pair_QA():
     item1 = rnd.randint(_MIN_NUM, _MAX_NUM)
     item2 = rnd.randint(_MIN_NUM, _MAX_NUM)
     question = f"{item1} {item2}"
