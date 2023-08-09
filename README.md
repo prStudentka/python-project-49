@@ -20,15 +20,15 @@ Make sure you are running at least Python 3.10.0
 Install using pip:  pip3 install brain-games
 or
 * git clone  <a href="https://github.com/prStudentka/python-project-49">Repository github</a> <br>
-* install: poetry install <br>
-* build: poetry build <br>
-* package-install: python3 -m pip install --user --force dist/*.whl <br>
+* install: make install<br>
+* build: make build<br>
+* package-install: make package-install<br>
 * brain-games: poetry run brain-games
 
-Start Game
-To start the game, run either:
-brain-even
-brain-prime
-brain-gcd
-brain-calc
-brain-progression
+Start Game<br>
+To start the game, run either:<br>
+brain-even<br>
+brain-prime<br>
+brain-gcd<br>
+brain-calc<br>
+brain-progression<br>
