@@ -14,7 +14,7 @@ def is_even(number: int) -> bool:
     return number % 2 == 0
 
 
-def get_pairQA():
+def get_pair_QA():
     question = rnd.randint(_MIN_NUM, _MAX_NUM)
     answer = 'yes' if is_even(question) else 'no'
     return (question, answer)
