@@ -21,7 +21,7 @@ def is_prime(number: int) -> bool:
     return True
 
 
-def get_pairQA():
+def get_pair_QA():
     question = rnd.randint(_MIN_NUM, _MAX_NUM)
     answer = 'yes' if is_prime(question) else 'no'
     return (question, answer)
