@@ -12,11 +12,9 @@ def get_rule():
 
 
 def get_pairQA():
-    num1 = rnd.randint(_MIN_NUM, 2 * _MAX_NUM)
+    num1 = rnd.randint(_MIN_NUM, _MAX_NUM)
     operation = rnd.choice(['+', '-', '*'])
-    num2 = rnd.randint(_MIN_NUM - 1, _MAX_NUM)
-    if operation == '-' and num2 > num1:
-        num1, num2 = num2, num1
+    num2 = rnd.randint(_MIN_NUM, _MAX_NUM)
     question = f'{num1} {operation} {num2}'
     dict_operation = {'+': add,
                       '-': sub,
