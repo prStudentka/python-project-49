@@ -23,7 +23,7 @@ def get_str_progression(progressin, pos):
     return ' '.join(map(str, progress_str))
 
 
-def get_pairQA():
+def get_pair_QA():
     length = rnd.randint(__MIN_LENGTH, __MAX_LENGTH)
     num1 = rnd.randint(_MIN_NUM, __MAX_NUM)
     step = rnd.randint(_MIN_STEP, _MAX_STEP)
@@ -31,4 +31,4 @@ def get_pairQA():
     progression = generate_progression(num1, step, length)   
     answer = progression[pos] 
     question = get_str_progression(progression, pos)
-    return (question, answer)
+    return (question, str(answer))
