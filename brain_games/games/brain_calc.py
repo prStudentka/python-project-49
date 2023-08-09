@@ -11,7 +11,7 @@ def get_rule():
     return __RULE
 
 
-def get_pairQA():
+def get_pair_QA():
     num1 = rnd.randint(_MIN_NUM, _MAX_NUM)
     operation = rnd.choice(['+', '-', '*'])
     num2 = rnd.randint(_MIN_NUM, _MAX_NUM)
@@ -20,4 +20,4 @@ def get_pairQA():
                       '-': sub,
                       '*': mul}
     answer = dict_operation.get(operation)(num1, num2)
-    return (question, answer)
+    return (question, str(answer))
