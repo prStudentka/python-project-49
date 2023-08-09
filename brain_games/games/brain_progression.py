@@ -17,7 +17,7 @@ def generate_progression(num, step, len):
                 for i in range(len)]
 
 
-def get_str_progression(progressin, pos):
+def get_str_progression(progression, pos):
     progress_str = [str(item) if index != pos else '..'
                     for index, item in enumerate(progression)]
     return ' '.join(map(str, progress_str))
