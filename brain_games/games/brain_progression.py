@@ -25,7 +25,7 @@ def get_str_progression(progressin, pos):
 
 def get_pair_QA():
     length = rnd.randint(__MIN_LENGTH, __MAX_LENGTH)
-    num1 = rnd.randint(_MIN_NUM, __MAX_NUM)
+    num1 = rnd.randint(_MIN_NUM, _MAX_NUM)
     step = rnd.randint(_MIN_STEP, _MAX_STEP)
     pos = rnd.randint(0, length - 1)
     progression = generate_progression(num1, step, length)   
