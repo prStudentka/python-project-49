@@ -11,13 +11,9 @@ def get_rule():
     return __RULE
 
 
-def make_example():
-    return {'num1': rnd.randint(_MIN_NUM, _MAX_NUM),
-            'num2': rnd.randint(_MIN_NUM, _MAX_NUM)}
-
-
-def get_pairQA():
-    item = make_example()
-    question = f"{item['num1']} {item['num2']}"
-    answer = gcd(item['num1'], item['num2'])
+def get_pairQA():    
+    item1 = rnd.randint(_MIN_NUM, _MAX_NUM)
+    item2 = rnd.randint(_MIN_NUM, _MAX_NUM)
+    question = f"{item1} {item2}"
+    answer = gcd(item1, item2)
     return (question, answer)
