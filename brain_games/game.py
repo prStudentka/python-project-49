@@ -10,12 +10,9 @@ def start_game(game):
     print(f'Hello, {user_name}!')
     print(game.get_rule())
     for _ in range(__ROUNDS_COUNT):
-        question, brain_answer = game.get_pairQA()
+        question, brain_answer = game.get_pair_QA()
         print('Question:', question)
-        if isinstance(brain_answer, int):
-            answer = prompt.integer('Your answer: ')
-        else:
-            answer = prompt.string('Your answer: ').lower().strip()
+        answer = prompt.string('Your answer: ').lower().strip()
         if brain_answer == answer:
             print('Correct!')
         else:
