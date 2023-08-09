@@ -16,4 +16,4 @@ def get_pair_QA():
     item2 = rnd.randint(_MIN_NUM, _MAX_NUM)
     question = f"{item1} {item2}"
     answer = gcd(item1, item2)
-    return (question, str(answer)))
+    return (question, str(answer))
