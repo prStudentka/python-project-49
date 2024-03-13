@@ -5,14 +5,21 @@
 
 ### Instructions:
 Five brain-games based on mathematical tasks.
+
 Pick up the game: brain-even, brain-prime, brain-gcd, brain-calc, brain-progression.
+
 User writing answer on task.
+
 Players have played three rounds.
+
 If answer is not correct - the Game's Over!
+
 
 ### Installation:
 Make sure you are running at least Python 3.10.0
+
 Install using pip:  pip3 install brain-games
+
 or
 
 * git clone  <a href="https://github.com/prStudentka/python-project-49">Repository github</a> <br>
@@ -25,13 +32,14 @@ or
 
 To start the game, run either:
 
-- brain-even
-- brain-prime
 - brain-gcd
 
   ![Example 1](https://github.com/prStudentka/hexlet-git/blob/main/pr49/brain_games.jpg?raw=true)
 
-    Image 1 - Example brain-gcd
-  
+        Image 1 - Example brain-gcd
+
+
+- brain-even
+- brain-prime
 - brain-calc
 - brain-progression
